@@ -21,11 +21,13 @@ displayInventory = () => {
         console.log("Current Inventory: ");
         var strOut = '';
         for (var i = 1; i < data.length; i++) {
+            var quan = data[i].stock_quantity;
             strOut = '';
             strOut += 'Item ID: ' + data[i].item_id + ' ';
             strOut += 'Product Name: ' + data[i].product_name + ' // ';
             strOut += 'Department: ' + data[i].department_name + ' // ';
-            strOut += 'Price: $' + data[i].price;
+            strOut += 'Price: $' + data[i].price + ' // ';
+            strOut += 'Quantity: ' + quan;
             console.log(strOut);
         }
     })
@@ -57,7 +59,6 @@ start = () => {
                 break;
             case 'Add New Product':
                 addProduct();
-
                 break;
         };
     });
@@ -69,7 +70,7 @@ viewLowInv = () => {
         if (err) throw err;
         console.log("Low Inventory: ");
         var strOut = '';
-        for (var i = 1; i < data.length; i++) {
+        for (var i = 0; i < data.length; i++) {
             var quan = data[i].stock_quantity;
             strOut = '';
             strOut += 'Item ID: ' + data[i].item_id + ' ';
